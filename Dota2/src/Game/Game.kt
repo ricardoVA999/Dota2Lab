@@ -2,87 +2,128 @@ package Game
 import Narrator.Narrator
 //Clase heroe
 class Game: Narrator{
-    var isSpanish: Boolean = true
-    //Funcion encargada de narrar el juego
-    override fun narrate(eventType: String): String {
-        if(isSpanish) {
-            if(eventType == "welcome"){
-                return("¡Bienvenidos a la eleccion de heroes!")
-            }
-            else if(eventType=="start"){
-                return ("¡Que inicie el juego!")
-            }
-            else if (eventType=="killR") {
-                return ("¡Radiant a matado a un enemigo!")
-            }
-            else if (eventType=="killD") {
-                return ("¡Dire a matado a un enemigo!")
-            }
-            else if (eventType=="killsR") {
-                return ("¡Radiant a matado a varios enemigos!")
-            }
-            else if (eventType=="killsD") {
-                return ("¡Dire a matado a varios enemigos!")
-            }
-            else if (eventType=="5killR") {
-                return ("¡PENTAKILL de Radiant!")
-            }
-            else if (eventType=="5killD") {
-                return ("¡PENTAKILL de Dire!")
-            }
-            else if (eventType=="turretR") {
-                return ("¡Radiant a matado una torreta!")
-            }
-            else if (eventType=="turretD") {
-                return ("¡Dire a matado una torreta!")
-            }
-            else if (eventType=="winR") {
-                return ("¡Radiant a ganado la partida!")
-            }
-            else if (eventType=="winD") {
-                return ("¡Dire a ganado la partida!")
-            }
+    fun welcome(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Welcome to Dota 2, and the hero election!"
+        }else{
+            return "¡Bienvenidos a dota 2, y la eleccion de campeones!"
         }
-
-        else if (!isSpanish){
-            if(eventType == "welcome"){
-                return("¡Welcome to the hero election!")
-            }
-            else if(eventType=="start"){
-                return ("¡Lets start the game!")
-            }
-            else if (eventType=="killR") {
-                return ("¡Radiant has killed an enemy!")
-            }
-            else if (eventType=="killD") {
-                return ("¡Dire has killed an enemy!")
-            }
-            else if (eventType=="killsR") {
-                return ("¡Radiant has killed multiple enemies!")
-            }
-            else if (eventType=="killsD") {
-                return ("¡Dire has killed multiple enemies!")
-            }
-            else if (eventType=="5killR") {
-                return ("¡Radiant´s PENTAKILL!")
-            }
-            else if (eventType=="5killD") {
-                return ("¡Dire´s PENTAKILL!")
-            }
-            else if (eventType=="turretR") {
-                return ("¡Radiant destroyed a turret!")
-            }
-            else if (eventType=="turretD") {
-                return ("¡Dire destroyed a turret!")
-            }
-            else if (eventType=="winR") {
-                return ("¡Radiant has won the game!")
-            }
-            else if (eventType=="winD") {
-                return ("¡Dire has won the game!")
-            }
+    }
+    fun start(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Lets start the game!"
+        }else{
+            return "¡Que inicie el juego!"
         }
-        return("No hay evento para la seleccion echa")
+    }
+    fun killR(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Radiant has killed an enemy!"
+        }else{
+            return "¡Radiant a matado a un enemigo!"
+        }
+    }
+    fun killD(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Dire has killed an enemy!"
+        }else{
+            return "¡Dire a matado a un enemigo!"
+        }
+    }
+    fun killsR(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Radiant has killed multiple enemies!"
+        }else{
+            return "¡Radiant a matado a varios enemigos!"
+        }
+    }
+    fun killsD(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Dire has killed multiple enemies!"
+        }else{
+            return "¡Dire a matado a varios enemigos!"
+        }
+    }
+    fun killR5(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Radiant´s PENTAKILL!"
+        }else{
+            return "¡PENTAKILL de Radiant!"
+        }
+    }
+    fun killD5(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Dire´s PENTAKILL!"
+        }else{
+            return "¡PENTAKILL de Dire!"
+        }
+    }
+    fun turretR(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Radiant destroyed a turret!"
+        }else{
+            return "¡Radiant a matado una torreta!"
+        }
+    }
+    fun turretD(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Dire destroyed a turret!"
+        }else{
+            return "¡Dire a matado una torreta!"
+        }
+    }
+    fun winR(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Radiant has won the game!!"
+        }else{
+            return "¡Radiant a ganado la partida!"
+        }
+    }
+    fun winD(isSpanish: Boolean): String{
+        if(!isSpanish){
+            return "¡Dire has won the game!"
+        }else{
+            return "¡Dire a ganado la partida!"
+        }
     }
 
+    override fun narrate(eventType: String): String{
+        if(eventType.equals("welcome")){
+            return welcome(true or false)
+        }
+        else if(eventType.equals("start")){
+            return start(true or false)
+        }
+        else if(eventType.equals("killR")){
+            return killR(true or false)
+        }
+        else if(eventType.equals("killD")){
+            return killD(true or false)
+        }
+        else if(eventType.equals("killsR")){
+            return killsR(true or false)
+        }
+        else if(eventType.equals("killsD")){
+            return killsD(true or false)
+        }
+        else if(eventType.equals("killD5")){
+            return killD5(true or false)
+        }
+        else if(eventType.equals("killR5")){
+            return killR5(true or false)
+        }
+        else if(eventType.equals("turretR")){
+            return turretR(true or false)
+        }
+        else if(eventType.equals("turretD")){
+            return turretD(true or false)
+        }
+        else if(eventType.equals("winR")){
+            return winR(true or false)
+        }
+        else if(eventType.equals("winD")){
+            return winD(true or false)
+        }
+        return ""
+    }
 }

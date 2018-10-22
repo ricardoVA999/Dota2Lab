@@ -147,9 +147,31 @@ fun main(args: Array<String>){
     //Configurar el idioma del juego
     val idioma = readLine().toString().toInt()
     if(idioma==1){
-        myGame.isSpanish=true
+        myGame.killD(true)
+        myGame.killR(true)
+        myGame.killsR(true)
+        myGame.killsD(true)
+        myGame.killD5(true)
+        myGame.killR5(true)
+        myGame.start(true)
+        myGame.welcome(true)
+        myGame.turretD(true)
+        myGame.turretR(true)
+        myGame.winD(true)
+        myGame.winR(true)
     }else if (idioma==2){
-        myGame.isSpanish=false
+        myGame.killD(false)
+        myGame.killR(false)
+        myGame.killsR(false)
+        myGame.killsD(false)
+        myGame.killD5(false)
+        myGame.killR5(false)
+        myGame.start(false)
+        myGame.welcome(false)
+        myGame.turretD(false)
+        myGame.turretR(false)
+        myGame.winD(false)
+        myGame.winR(false)
     }else{
         println("Esa opcion no existe")
     }
