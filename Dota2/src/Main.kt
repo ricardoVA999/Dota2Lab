@@ -34,6 +34,7 @@ fun main(args: Array<String>){
     var contador=0
     var contador2=1
     var direTurn=false
+    var languageE=false
     //Creacion de los equipos Dire y Radiant
     val teammatesR = ArrayList<Hero>()
     val teammatesD = ArrayList<Hero>()
@@ -71,7 +72,7 @@ fun main(args: Array<String>){
     val dire = Team(teammatesD, turretsD, ancientD)
 
     //Inicializar el juego
-    val myGame = Game()
+    val myGame = Game<Unit>()
 
     //Funcion para anunciar los eventos de torres
     fun killsT(){
@@ -80,12 +81,12 @@ fun main(args: Array<String>){
         if (option=="Si"||option=="si"||option=="SI"){
             dire.turrets[0].Dead=true
             dire.turrets.remove(dire.turrets[0])
-            println(myGame.narrate("turretR"))
+            println(myGame.narrate("turretR",languageE))
         }
         else if(option=="No"||option=="no"||option=="NO"){
             radiant.turrets[0].Dead=true
             radiant.turrets.remove(dire.turrets[0])
-            println(myGame.narrate("turretD"))
+            println(myGame.narrate("turretD",languageE))
         }
         else{
             println("Esa opcion no existe")
@@ -100,15 +101,15 @@ fun main(args: Array<String>){
             println("Cuantas muertes ocurrieron:")
             val killNo = readLine().toString().toInt()
             if(killNo==1){
-                println(myGame.narrate("killR"))
+                println(myGame.narrate("killR",languageE))
                 killR=killR+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else if(1<killNo && killNo<5){
-                println(myGame.narrate("killsR"))
+                println(myGame.narrate("killsR",languageE))
                 killR=killR+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else if(killNo==5){
-                println(myGame.narrate("5killR"))
+                println(myGame.narrate("killR5",languageE))
                 killR=killR+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else{
@@ -118,15 +119,15 @@ fun main(args: Array<String>){
             println("Cuantas muertes ocurrieron:")
             val killNo = readLine().toString().toInt()
             if(killNo==1){
-                println(myGame.narrate("killD"))
+                println(myGame.narrate("killD",languageE))
                 killD=killD+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else if(1<killNo && killNo<5){
-                println(myGame.narrate("killsD"))
+                println(myGame.narrate("killsD",languageE))
                 killD=killD+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else if(killNo==5){
-                println(myGame.narrate("5killD"))
+                println(myGame.narrate("killD5",languageE))
                 killD=killD+killNo
                 println("Radiant tiene "+killR+" kills y Dire tiene "+killD+" kills.")
             }else{
@@ -147,38 +148,16 @@ fun main(args: Array<String>){
     //Configurar el idioma del juego
     val idioma = readLine().toString().toInt()
     if(idioma==1){
-        myGame.killD(true)
-        myGame.killR(true)
-        myGame.killsR(true)
-        myGame.killsD(true)
-        myGame.killD5(true)
-        myGame.killR5(true)
-        myGame.start(true)
-        myGame.welcome(true)
-        myGame.turretD(true)
-        myGame.turretR(true)
-        myGame.winD(true)
-        myGame.winR(true)
+        languageE=true
     }else if (idioma==2){
-        myGame.killD(false)
-        myGame.killR(false)
-        myGame.killsR(false)
-        myGame.killsD(false)
-        myGame.killD5(false)
-        myGame.killR5(false)
-        myGame.start(false)
-        myGame.welcome(false)
-        myGame.turretD(false)
-        myGame.turretR(false)
-        myGame.winD(false)
-        myGame.winR(false)
+        languageE=false
     }else{
         println("Esa opcion no existe")
     }
 
     //Comienzo de la narracion del juego(Eleccion de campeones)
     println("SINGLE DRAFT")
-    println(myGame.narrate("welcome"))
+    println(myGame.narrate("welcome",languageE))
 
     //Elegir los 10 campeones
     while(contador!=10){
@@ -221,7 +200,7 @@ fun main(args: Array<String>){
     }
 
     //Anunciar el inicio del juego
-    println(myGame.narrate("start"))
+    println(myGame.narrate("start",languageE))
 
     //Mantener el while mientras que los 2 ancient esten vivos
     while (!dire.ancient.Dead && !radiant.ancient.Dead){
@@ -268,20 +247,21 @@ fun main(args: Array<String>){
                 val option = readLine()
                 if (option=="Si" && dire.turrets.size==0){
                     dire.ancient.Dead=true
-                    println(myGame.narrate("winR"))
+                    println(myGame.narrate("winR",languageE))
                     println("El marcador final de kills fue:")
                     println("Radiant: "+killR+" Dire: "+killD)
                 }
                 else if(option=="No" && radiant.turrets.size==0){
                     radiant.ancient.Dead=true
-                    println(myGame.narrate("winD"))
+                    println(myGame.narrate("winD",languageE))
                     println("El marcador final de kills fue:")
                     println("Radiant: "+killR+" Dire: "+killD)
                 }
                 else{
                     println("Aun no se puede realizar esta opcion")
                 }
-            }else{
+            }
+            else{
                 println("Esa opcion no existe")
             }
         }

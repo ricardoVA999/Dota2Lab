@@ -1,7 +1,7 @@
 package Game
 import Narrator.Narrator
 //Clase heroe
-class Game: Narrator{
+class Game<T>: Narrator{
     fun welcome(isSpanish: Boolean): String{
         if(!isSpanish){
             return "¡Welcome to Dota 2, and the hero election!"
@@ -87,42 +87,42 @@ class Game: Narrator{
         }
     }
 
-    override fun narrate(eventType: String): String{
-        if(eventType.equals("welcome")){
-            return welcome(true or false)
+    override fun narrate(eventType: String, isSpanish: Boolean): String{
+        if(eventType.equals("welcome", isSpanish)){
+            return welcome(isSpanish)
         }
-        else if(eventType.equals("start")){
-            return start(true or false)
+        else if(eventType.equals("start",isSpanish)){
+            return start(isSpanish)
         }
-        else if(eventType.equals("killR")){
-            return killR(true or false)
+        else if(eventType.equals("killR", isSpanish)){
+            return killR(isSpanish)
         }
-        else if(eventType.equals("killD")){
-            return killD(true or false)
+        else if(eventType.equals("killD", isSpanish)){
+            return killD(isSpanish)
         }
-        else if(eventType.equals("killsR")){
-            return killsR(true or false)
+        else if(eventType.equals("killsR", isSpanish)){
+            return killsR(isSpanish)
         }
-        else if(eventType.equals("killsD")){
-            return killsD(true or false)
+        else if(eventType.equals("killsD", isSpanish)){
+            return killsD(isSpanish)
         }
-        else if(eventType.equals("killD5")){
-            return killD5(true or false)
+        else if(eventType.equals("killD5", isSpanish)){
+            return killD5(isSpanish)
         }
-        else if(eventType.equals("killR5")){
-            return killR5(true or false)
+        else if(eventType.equals("killR5", isSpanish)){
+            return killR5(isSpanish)
         }
-        else if(eventType.equals("turretR")){
-            return turretR(true or false)
+        else if(eventType.equals("turretR", isSpanish)){
+            return turretR(isSpanish)
         }
-        else if(eventType.equals("turretD")){
-            return turretD(true or false)
+        else if(eventType.equals("turretD", isSpanish)){
+            return turretD(isSpanish)
         }
-        else if(eventType.equals("winR")){
-            return winR(true or false)
+        else if(eventType.equals("winR", isSpanish)){
+            return winR(isSpanish)
         }
-        else if(eventType.equals("winD")){
-            return winD(true or false)
+        else if(eventType.equals("winD", isSpanish)){
+            return winD(isSpanish)
         }
         return ""
     }
